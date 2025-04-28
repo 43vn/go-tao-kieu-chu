@@ -1,0 +1,161 @@
+body {
+    font-family:
+        DejaVu Sans Mono,
+        monospace;
+    margin: 20px auto;
+    max-width: 800px;
+    line-height: 1.5em;
+    font-size: 1.1em;
+    background-color: #282c34;
+    color: #bbc2cf;
+    padding: 0 10px;
+    hyphens: auto;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #ff6c6b;
+    border-radius: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+footer {
+    border-top: 2px solid #ff6c6b;
+    border-radius: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+footer p {
+    margin: 0.2em 0 0.2em 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+nav li {
+    display: inline-block no;
+    margin-right: 20px;
+}
+.navlogo {
+    width: 50px;
+    height: 50px;
+}
+a {
+    color: #ff6c6b;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff6c6b;
+    text-decoration: underline;
+}
+h1,
+h2,
+h3 {
+    display: inline; /* Sidenote: who decided on inline? */
+    line-height: 1.2;
+    color: #51afef;
+    font-size: 1.3em;
+}
+h2 {
+    font-size: 1.2em;
+}
+h3 {
+    font-size: 1.1em;
+}
+.h:hover a[aria-hidden] {
+    display: inline;
+    color: #ff6c6b;
+    size: 75%;
+}
+.h a[aria-hidden] {
+    display: none;
+}
+pre {
+    tab-size: 4;
+    background: #20232a;
+    color: #969ba6;
+    border: 1px solid lightgrey;
+    padding: 5px;
+    tab-size: 4;
+}
+.red {
+    color: #ff6c6b;
+}
+.green {
+    color: #98be65;
+}
+input[type="submit"] {
+    padding: 5px 15px;
+    background: #51afef;
+    border: 0 none;
+    -webkit-border-radius: 10px;
+    color: #282c34;
+    border-radius: 10px;
+}
+
+progress {
+    height: 12px;
+    width: 90%;
+    border-radius: 7px;
+    border: 0px solid #282c34;
+    background-color: #bbc2cf;
+    color: #ff6c6b;
+}
+
+progress::-moz-progress-bar {
+    color: transparent;
+    background-color: #ff6c6b;
+    border-radius: 7px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #bbc2cf;
+}
+progress::-webkit-progress-value {
+    background-color: #ff6c6b;
+    border-radius: 7px;
+}
+
+input[type="checkbox"] {
+    color: #282c34;
+    background-color: #bbc2cf;
+}
+ul[userlist] {
+    list-style: none;
+}
+ul[userlist] li[online]::before {
+    content: "\2022";
+    color: #ff6c6b;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+ul[userlist] li[online$="true"]::before {
+    color: #98be65;
+}
+textarea {
+    background-color: #282c34;
+    color: #bbc2cf;
+}
+input {
+    background-color: #282c34;
+    color: #bbc2cf;
+}
+.date {
+    //color: grey;
+    display: block;
+    font-family: monospace;
+    margin-top: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 16ch;
+}

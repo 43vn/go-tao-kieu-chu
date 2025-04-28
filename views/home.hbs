@@ -1,0 +1,14 @@
+<body>
+<pre>
+<h1>[ > TẠO KIỂU CHỮ < ]</h1>
+============
+{{#if errorMsg}}<span style="color: red">=== {{errorMsg}} ===</span>{{/if}}
+{{#if imageURL}}<img src="{{imageURL}}" />{{/if}}
+<form method="POST" action="/create">
+<p>[# Danh sách font hỗ trợ] <select name="font">{{#each Fonts}} <option value="{{this}}" {{#equal this font}}selected{{/equal}}>{{this}}</option> {{/each}}</select>
+</p>
+<p>[# Chữ cần tạo] <input type="text" name="text" value="{{text}}" maxlength="32"></p>
+<p><button type="submit">tạo chữ</button></p>
+<form>
+</pre>
+</body>
