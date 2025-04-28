@@ -17,4 +17,4 @@ COPY --from=builder /app/server /app/server
 ENV PORT=8080
 EXPOSE 8080
 
-ENTRYPOINT ["/server"]
+ENTRYPOINT ["/app/server"]
