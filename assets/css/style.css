@@ -92,7 +92,7 @@ pre {
 .green {
     color: #98be65;
 }
-input[type="submit"] {
+button {
     padding: 5px 15px;
     background: #51afef;
     border: 0 none;
