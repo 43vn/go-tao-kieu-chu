@@ -8,7 +8,10 @@
 <p>[# Danh sách font hỗ trợ] <select name="font">{{#each Fonts}} <option value="{{this}}" {{#equal this font}}selected{{/equal}}>{{this}}</option> {{/each}}</select>
 </p>
 <p>[# Chữ cần tạo] <input type="text" name="text" value="{{text}}" maxlength="32"></p>
-<p><button type="submit">tạo chữ</button></p>
+<p>[# Cỡ chữ] <input type="text" name="fontSize" value="{{fontSize}}"></p>
+<p>[# Khoảng cách] <input type="text" name="padding" value="{{padding}}"></p>
+<p>[# Chiều cao mở rộng] <input type="text" name="height" value="{{height}}"></p>
+<p><button type="submit">[tạo chữ]</button></p>
 <form>
 </pre>
 </body>

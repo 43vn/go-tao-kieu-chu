@@ -11,15 +11,7 @@ import (
 	"github.com/gofiber/template/handlebars/v2"
 )
 
-func mustGetEnv(key string) string {
-	value := os.Getenv(key)
-	if value == "" {
-		panic("Missing required environment variable: " + key)
-	}
-	return value
-}
 func main() {
-	mustGetEnv("AES_KEY")
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"

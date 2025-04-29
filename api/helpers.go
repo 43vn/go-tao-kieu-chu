@@ -1,9 +1,11 @@
 package api
+
 import (
-	"os"
 	"encoding/base64"
 	"html"
+	"os"
 )
+
 func workingDir() string {
 	dir, _ := os.Getwd()
 	return dir
@@ -11,12 +13,12 @@ func workingDir() string {
 
 // Mã hóa lỗi thành base64
 func B64E(errorMsg string) string {
-	return base64.StdEncoding.EncodeToString([]byte(errorMsg))
+	return base64.URLEncoding.EncodeToString([]byte(errorMsg))
 }
 
 // Giải mã base64 thành chuỗi
 func B64D(encoded string) string {
-	decodedBytes, err := base64.StdEncoding.DecodeString(encoded)
+	decodedBytes, err := base64.URLEncoding.DecodeString(encoded)
 	if err != nil {
 		return ""
 	}

@@ -2,9 +2,11 @@ package api
 
 import (
 	"bytes"
+	"compress/gzip"
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/rand"
+	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
@@ -17,8 +19,77 @@ var (
 )
 
 type Gen struct {
-	Text string `json:"text"`
-	Font string `json:"font"`
+	Text     string `json:"text"`
+	Font     string `json:"font"`
+	Padding  string `json:"padding"`
+	FontSize string `json:"fontSize"`
+	Height   string `json:"height"`
+}
+
+func (g *Gen) EncodeCompressed() (string, error) {
+	// JSON encode
+	plaintext, err := json.Marshal(g)
+	if err != nil {
+		return "", err
+	}
+
+	// GZIP compress
+	var buf bytes.Buffer
+	w := gzip.NewWriter(&buf)
+	if _, err := w.Write(plaintext); err != nil {
+		return "", err
+	}
+	w.Close()
+
+	// Encode to base64
+	return base64.URLEncoding.EncodeToString(buf.Bytes()), nil
+}
+
+func DecodeCompressed(encoded string) (*Gen, error) {
+	// Decode base64
+	compressed, err := base64.URLEncoding.DecodeString(encoded)
+	if err != nil {
+		return nil, err
+	}
+
+	// GZIP decompress
+	r, err := gzip.NewReader(bytes.NewReader(compressed))
+	if err != nil {
+		return nil, err
+	}
+	defer r.Close()
+	decompressed, err := io.ReadAll(r)
+	if err != nil {
+		return nil, err
+	}
+
+	// JSON decode
+	var g Gen
+	if err := json.Unmarshal(decompressed, &g); err != nil {
+		return nil, err
+	}
+	return &g, nil
+}
+
+func (g *Gen) Hex() (string, error) {
+	plaintext, err := json.Marshal(g)
+	if err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(plaintext), nil
+}
+
+func GetFromHex(hexStr string) (*Gen, error) {
+	data, err := hex.DecodeString(hexStr)
+	if err != nil {
+		return nil, err
+	}
+	var g Gen
+	if err := json.Unmarshal(data, &g); err != nil {
+		return nil, err
+	}
+
+	return &g, nil
 }
 
 func (gen *Gen) Encrypt() (string, error) {
